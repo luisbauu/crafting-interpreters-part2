@@ -175,6 +175,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
   public Object visitCallExpr(Expr.Call expr) {
     Object callee = evaluate(expr.callee);
 
+    if (!(callee instanceof LoxCallable)) {
+      throw new RuntimeError(expr.paren,
+          "Can only call functions and classes.");
+    }
+
     List<Object> arguments = new ArrayList<>();
     for (Expr argument : expr.arguments) { 
       arguments.add(evaluate(argument));
@@ -188,10 +193,6 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
     return function.call(this, arguments);
 
-     if (!(callee instanceof LoxCallable)) {
-      throw new RuntimeError(expr.paren,
-          "Can only call functions and classes.");
-    }
   }
 
   private boolean isEqual(Object a, Object b) {
