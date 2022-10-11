@@ -2,6 +2,13 @@ package com.craftinginterpreters.lox;
 
 import java.util.List;
 import java.util.Map;
+
+import com.craftinginterpreters.lox.Expr.Get;
+import com.craftinginterpreters.lox.Expr.Set;
+import com.craftinginterpreters.lox.Expr.Super;
+import com.craftinginterpreters.lox.Expr.This;
+import com.craftinginterpreters.lox.Stmt.Class;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -296,5 +303,35 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
 
     return value;
+  }
+
+  @Override
+  public Void visitClassStmt(Class stmt) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitGetExpr(Get expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitSetExpr(Set expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitSuperExpr(Super expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitThisExpr(This expr) {
+    // TODO Auto-generated method stub
+    return null;
   }
 }

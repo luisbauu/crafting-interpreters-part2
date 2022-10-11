@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import com.craftinginterpreters.lox.Expr.Get;
+import com.craftinginterpreters.lox.Expr.Set;
+import com.craftinginterpreters.lox.Expr.Super;
+import com.craftinginterpreters.lox.Expr.This;
+import com.craftinginterpreters.lox.Stmt.Class;
+
 class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
   private final Interpreter interpreter;
   private final Stack<Map<String, Boolean>> scopes = new Stack<>();
@@ -173,7 +179,9 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
     }
 
     private void endScope() {
+      if(!scopes.isEmpty()){
         scopes.pop();
+      }
     }
 
     private void declare(Token name) {
@@ -201,6 +209,36 @@ class Resolver implements Expr.Visitor<Void>, Stmt.Visitor<Void> {
             return;
           }
         }
+    }
+
+    @Override
+    public Void visitClassStmt(Class stmt) {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public Void visitGetExpr(Get expr) {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public Void visitSetExpr(Set expr) {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public Void visitSuperExpr(Super expr) {
+      // TODO Auto-generated method stub
+      return null;
+    }
+
+    @Override
+    public Void visitThisExpr(This expr) {
+      // TODO Auto-generated method stub
+      return null;
     }
 }
 
