@@ -11,7 +11,6 @@ class LoxFunction implements LoxCallable {
     this.closure = closure;
     this.declaration = declaration;
   }
-}
 
 @Override
 public Object call(Interpreter interpreter,
