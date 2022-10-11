@@ -1,6 +1,13 @@
 package com.craftinginterpreters.lox;
 
 import java.util.List;
+
+import com.craftinginterpreters.lox.Expr.Get;
+import com.craftinginterpreters.lox.Expr.Set;
+import com.craftinginterpreters.lox.Expr.Super;
+import com.craftinginterpreters.lox.Expr.This;
+import com.craftinginterpreters.lox.Stmt.Class;
+
 import java.util.ArrayList;
 
 class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
@@ -164,6 +171,11 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
       arguments.add(evaluate(argument));
     }
 
+    if (!(callee instanceof LoxCallable)) {
+      throw new RuntimeError(expr.paren,
+          "Can only call functions and classes.");
+    }
+
     LoxCallable function = (LoxCallable)callee;
     if (arguments.size() != function.arity()) {
       throw new RuntimeError(expr.paren, "Expected " +
@@ -172,10 +184,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     }
     return function.call(this, arguments);
 
-     if (!(callee instanceof LoxCallable)) {
-      throw new RuntimeError(expr.paren,
-          "Can only call functions and classes.");
-    }
+    
   }
 
   private boolean isEqual(Object a, Object b) {
@@ -272,5 +281,35 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
     Object value = evaluate(expr.value);
     environment.assign(expr.name, value);
     return value;
+  }
+
+  @Override
+  public Void visitClassStmt(Class stmt) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitGetExpr(Get expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitSetExpr(Set expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitSuperExpr(Super expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object visitThisExpr(This expr) {
+    // TODO Auto-generated method stub
+    return null;
   }
 }
