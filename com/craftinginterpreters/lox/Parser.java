@@ -115,7 +115,7 @@ class Parser {
     }
 
     consume(SEMICOLON, "Expect ';' after return value.");
-    return new Stmt.Return(keyword, value);
+    return new Stmt.Return(value);
   }
 
 
