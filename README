@@ -1,0 +1,44 @@
+# Interpreter Implementation Lab 2
+
+## Members
+
+- Bautista, Jose Luis
+- Alcibar, Elijah Kieran
+- Villamor, Joshua Dru Stephen
+
+## Functionality
+
+The group chose to implement set 2.
+
+### Instead of requiring the return keyword when returning a value in a function, the value of the first expression statement in a function block will be the return value of a function.
+
+```
+fun hello() {
+  for(var i = 0; i < 10; i = i + 1) {
+    if(i == 5) {
+      i;
+    }
+  }
+}
+print hello();
+
+```
+
+```
+fun test() {
+  print(1);
+  print(2);
+  7;
+  print(3);
+}
+print test();
+
+```
+
+```
+fun test() {
+  print "Hello";
+}
+print test();
+
+```
